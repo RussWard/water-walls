@@ -1,0 +1,14 @@
+{
+  "name": "water-walls",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Russ Ward",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^22.1.4"
+  }
+}
