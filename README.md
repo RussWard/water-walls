@@ -33,7 +33,7 @@ const findEnd = (current, remainingWalls) => {
 const waterWalls = (wallsArray) => {
   //set a largestWell variable
   //set a current pointer to 0
-  //while wellsArray[current] > wellsArray[1]
+  //while wellsArray[current] > wellsArray[current + 1]
     //check if it's a well
       //if so, find it's end
       //calculate it's water capacity
@@ -51,12 +51,22 @@ Transormations:
 
 walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2],
 
-1. walls[0] > walls[1]
+1. walls[0] > walls[1] === true
 2. -> isWell(walls[0], walls.slice(1)) === true
-3. --> findEnd(walls[0], walls.slice(1) === 2)
+3. --> findEnd(walls[0], walls.slice(1) === 2
 4. --> calculateCapacity(5, [3]) === 2
-5. !largestWell so largestWell = {start: 1, end: 3, water: 2}
-6. current = 
+5. --> no largestWell so largestWell = {start: 1, end: 3, water: 2}
+6. current = 2
+7. walls[2] = 7, walls[3] = 2, 7 > 3
+8. -> isWell(walls[2], walls.slice(3)) === true
+9. --> findEnd(walls[2], walls.slice(3)) === 5 
+10. --> calculateCapacity(7, [2, 6, 4, 5]) === 11
+11. --> largestWell.water === 2 and 11 > 2 so largestWell = currentWell
+12. current = 2 + 5 => 7
+13. walls[7] > walls[8]
+12. -> isWell(walls[7], walls.slice(8)) === false
+13. -> current = 8
+14. 
         
 
 

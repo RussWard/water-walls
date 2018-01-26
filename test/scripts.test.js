@@ -8,14 +8,13 @@ const {
 describe('water-wells', () => {
   describe('isWell', () => {
     it('returns true is the given values do make a well', () => {
-      let current = 5;
-      let validWell = [3, 4, 5];
-      expect(isWell(current, validWell)).toBe(true);
+      //let validWell = [3, 4, 5];
+      let validWell = [2, 6, 4, 5, 9, 1, 2];
+      expect(isWell(validWell)).toBe(true);
     });
     it('returns false if the given values do not make a well', () => {
-      let current = 5;
       let invalidWell = [4, 3, 2];
-      expect(isWell(current, invalidWell)).toBe(false); 
+      expect(isWell(invalidWell)).toBe(false); 
     });
   });
   describe('findEnd', () => {
@@ -35,7 +34,9 @@ describe('water-wells', () => {
   });
   it('returns the correct values for a given walls array', () => {
     let walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2];
+    //let walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2, 1, 8];
     let expected = [3, 8, 11];
+    //let expected = [8, 12, 20]
     expect(waterWalls(walls)).toEqual(expected);
   });
   it('returns an error in string form if no well is found', () => {

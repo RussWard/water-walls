@@ -6,19 +6,25 @@ const calculateCapacity = (height, walls) => {
   return water;
 }
 
-const isWell = (current, remainingWalls) => {
-  if (Math.max(...remainingWalls) >= current) {
+const isWell = (remainingWalls) => {
+  if (Math.max(...remainingWalls.slice(1)) > remainingWalls[0]) {
     return true;
   }
   return false;
 }
 
 const findEnd = (current, remainingWalls) => {
-  for (let i = 0; i < remainingWalls.length; i++) {
-    if (remainingWalls[i] >= current) {
-      return i + 1;
+  let endIndex = 0
+
+  for (let i = 1; i < remainingWalls.length; i++) {
+    if (remainingWalls[i] > remainingWalls[endIndex]) {
+      endIndex = i;
+    }
+    if (remainingWalls[endIndex] >= current) {
+      return endIndex + 1;
     }
   }
+  return endIndex + 1;
 }
 
 
@@ -26,36 +32,31 @@ const waterWalls = (wallsArray) => {
   let largestWell;
   let current = 0;
 
-  while (wallsArray[current] > wallsArray[current + 1]) {
-    if (isWell(wallsArray[current], wallsArray.slice(current + 1))) {
-      let end = findEnd(wallsArray[current], wallsArray.slice(current + 1));
-      let currentWell = {
-        start: current + 1,
-        end: current + 1 + end,
-        water: calculateCapacity(wallsArray[current], wallsArray.slice(current + 1, current + end))
+  while (wallsArray[current + 1]) {
+    if (wallsArray[current] > wallsArray[current + 1]) {
+      if (isWell(wallsArray.slice(current + 1))) {
+        let end = findEnd(wallsArray[current], wallsArray.slice(current + 1));
+        let wellHeight = Math.min(wallsArray[current], wallsArray[current + end]);
+        let currentWell = {
+          start: current + 1,
+          end: current + 1 + end,
+          water: calculateCapacity(wellHeight, wallsArray.slice(current + 1, current + end))
+        }
+        if (!largestWell || currentWell.water > largestWell.water) {
+          largestWell = currentWell;
+        }
+        current = current + end;
+      } else {
+        current++;
       }
-      if (!largestWell || currentWell.water > largestWell.water) {
-        largestWell = currentWell;
-      }
-      current = current + end; 
     } else {
       current++;
     }
-    if (current > wallsArray.length - 2) {
-      if (largestWell) {
-        return [largestWell.start, largestWell.end, largestWell.water]
-      } else {
-        return 'no wells found'
-      }
-    }
   }
-  while (wallsArray[current] <= wallsArray[current + 1]) {
-    current++;
-  }
-  if (largestWell) {
-    return [largestWell.start, largestWell.end, largestWell.water]
+  if (!largestWell) {
+    return 'no wells found';
   } else {
-    return 'no wells found'
+    return [largestWell.start, largestWell.end, largestWell.water];
   }
 }
 
