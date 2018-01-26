@@ -23,31 +23,40 @@ const findEnd = (current, remainingWalls) => {
 
 
 const waterWalls = (wallsArray) => {
-  //set a largestWell variable
   let largestWell;
-  //set a current pointer to 0
   let current = 0;
-  //if wallsArray[current] > wallsArray[1]
+
   while (wallsArray[current] > wallsArray[current + 1]) {
     if (isWell(wallsArray[current], wallsArray.slice(current + 1))) {
       let end = findEnd(wallsArray[current], wallsArray.slice(current + 1));
       let currentWell = {
         start: current + 1,
         end: current + 1 + end,
-        water: calculateCapacity(wallsArray[current], wallsArray.slice(current + 1, current + this.end))
+        water: calculateCapacity(wallsArray[current], wallsArray.slice(current + 1, current + end))
       }
       if (!largestWell || currentWell.water > largestWell.water) {
-        currentWell = largestWell;
+        largestWell = currentWell;
       }
-      current = currentWell.end; 
+      current = current + end; 
     } else {
-      current += 1;
+      current++;
     }
-
     if (current > wallsArray.length - 2) {
-      return [largestWell.start, largestWell.end, largestWell.water]
+      if (largestWell) {
+        return [largestWell.start, largestWell.end, largestWell.water]
+      } else {
+        return 'no wells found'
+      }
     }
-  }    
+  }
+  while (wallsArray[current] <= wallsArray[current + 1]) {
+    current++;
+  }
+  if (largestWell) {
+    return [largestWell.start, largestWell.end, largestWell.water]
+  } else {
+    return 'no wells found'
+  }
 }
 
 module.exports = {
