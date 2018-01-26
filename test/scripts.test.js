@@ -33,9 +33,14 @@ describe('water-wells', () => {
       expect(calculateCapacity(current, validWell)).toBe(expected);
     });
   });
-  it('return the correct values for a given walls array', () => {
+  it('returns the correct values for a given walls array', () => {
     let walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2];
     let expected = [3, 8, 11];
-    expect(waterWalls(walls)).toEqual(expect.arrayContaining(expected));
+    expect(waterWalls(walls)).toEqual(expected);
+  });
+  it('returns an error in string form if no well is found', () => {
+    let walls = [1, 2, 3, 4, 4, 4, 3, 2, 1];
+    let expected = 'no wells found';
+    expect(waterWalls(walls)).toEqual(expected);
   })
 })
