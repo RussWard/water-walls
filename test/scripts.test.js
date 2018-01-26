@@ -33,10 +33,10 @@ describe('water-wells', () => {
     });
   });
   it('returns the correct values for a given walls array', () => {
-    let walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2];
-    //let walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2, 1, 8];
-    let expected = [3, 8, 11];
-    //let expected = [8, 12, 20]
+    //let walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2];
+    let walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2, 1, 9];
+    //let expected = [3, 8, 11];
+    let expected = [8, 12, 23]
     expect(waterWalls(walls)).toEqual(expected);
   });
   it('returns an error in string form if no well is found', () => {

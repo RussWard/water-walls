@@ -37,10 +37,11 @@ const waterWalls = (wallsArray) => {
       if (isWell(wallsArray.slice(current + 1))) {
         let end = findEnd(wallsArray[current], wallsArray.slice(current + 1));
         let wellHeight = Math.min(wallsArray[current], wallsArray[current + end]);
+        let capacity = calculateCapacity(wellHeight, wallsArray.slice(current + 1, current + end));
         let currentWell = {
           start: current + 1,
           end: current + 1 + end,
-          water: calculateCapacity(wellHeight, wallsArray.slice(current + 1, current + end))
+          water: capacity
         }
         if (!largestWell || currentWell.water > largestWell.water) {
           largestWell = currentWell;

@@ -17,33 +17,40 @@ const calculateCapacity = (height, columns) => {
   //return water;
 }
 
-const isWell = (current, remainingWalls) => {
-  // if the max of the remaining walls is greater than or equal to current
+const isWell = (remainingWalls) => {
+  // if the first wall is shorter than any of the rest of the remaining walls
     //return true;
   //return false; 
 }
 
 const findEnd = (current, remainingWalls) => {
+  //declare endIndex variable
   //for loop on remainingWalls
-    //if remainingWalls[i] is greater than or equal to current
-      // return i + 1;
+    //if remainingWalls[i] is greater than or equal to remainingWalls[endIndex]
+      // endIndex = i;
+    //if remainingWalls[endIndex] >= current
+      //return endIndex + 1;
+  //return endIndex + 1;
 }
 
 
 const waterWalls = (wallsArray) => {
   //set a largestWell variable
   //set a current pointer to 0
-  //while wellsArray[current] > wellsArray[current + 1]
-    //check if it's a well
-      //if so, find it's end
-      //calculate it's water capacity
-      //if it's capacity is greater than the largestWell, replace largestWell
-      //update current to end of the well
-    // otherwise, if there was no valid well, increment current
-    //if current is greater than wellsArray.length - 2, return largestWell
-  //while wellsArray[current] < wellsArray[current +1]
-    //increment current
-  //return largestWell      
+  //while wellsArray[current + 1]
+    //if wallsArray[current] > wallsArray[current + 1]
+      //check if it's a valid well
+        //find the wells end
+        //find the wells height
+        //find the wells capacity
+        //create a currentWell object
+        //if there is no largest well or if the currentWell.water > largestWell.water
+          //set largestWell to currentWell
+        //move current pointer to the end of the current well
+      //otherwise, increment current
+    //otherwise, increment current
+  //if no largestWell has been set, return string
+  //otherwise return largestWell in array form 
 }
 
 
@@ -51,22 +58,20 @@ Transormations:
 
 walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2],
 
-1. walls[0] > walls[1] === true
-2. -> isWell(walls[0], walls.slice(1)) === true
-3. --> findEnd(walls[0], walls.slice(1) === 2
-4. --> calculateCapacity(5, [3]) === 2
-5. --> no largestWell so largestWell = {start: 1, end: 3, water: 2}
-6. current = 2
-7. walls[2] = 7, walls[3] = 2, 7 > 3
-8. -> isWell(walls[2], walls.slice(3)) === true
-9. --> findEnd(walls[2], walls.slice(3)) === 5 
-10. --> calculateCapacity(7, [2, 6, 4, 5]) === 11
-11. --> largestWell.water === 2 and 11 > 2 so largestWell = currentWell
-12. current = 2 + 5 => 7
-13. walls[7] > walls[8]
-12. -> isWell(walls[7], walls.slice(8)) === false
-13. -> current = 8
-14. 
+1. current = 0, largestWell = undfined, wallsArray[current + 1] = 3 so we enter the while loop.
+2. wallsArray[current] is greater than wallsArray[current + 1] so we enter the if block
+3. isWell(wallsArray[3, 7, 2, 6, 4, 5, 9, 1, 2]) is true so we enter the next if block
+4. end = findEnd(5, [3, 7, 2, 6, 4, 5, 9, 1, 2]) => 2
+5. wellHeight = min of 5, 7 => 5
+6. currentWell = {
+  start: current + 1, => 1
+  end: current + 1 + end, => 3
+  water: calculateCapacity(5, [3]) => 2
+}
+7. largestWell = undefined so largestWell = currentWell
+8. current = current + end => 0 + 2 = 2
+9. current = 2, largestWell = {start:1, end:3, water:2} wallsArray[current + 1] = 2 so back into the while loop
+10. 
         
 
 
