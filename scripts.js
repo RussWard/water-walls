@@ -1,7 +1,7 @@
 const calculateCapacity = (height, walls) => {
   let water = 0;
   walls.forEach(wall => {
-    water += (wall - height);
+    water += (height - wall);
   })
   return water;
 }
