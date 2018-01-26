@@ -34,14 +34,18 @@ const waterWalls = (wallsArray) => {
       let currentWell = {
         start: current + 1,
         end: current + 1 + end,
-        water: calculateCapacity(wallsArray[current], wallsArray.slice(current + 1, current + this.end + 1))
+        water: calculateCapacity(wallsArray[current], wallsArray.slice(current + 1, current + this.end))
       }
       if (!largestWell || currentWell.water > largestWell.water) {
         currentWell = largestWell;
       }
+      current = currentWell.end; 
+    } else {
+      current += 1;
     }
+
     if (current > wallsArray.length - 2) {
-      
+      return [largestWell.start, largestWell.end, largestWell.water]
     }
   }    
 }

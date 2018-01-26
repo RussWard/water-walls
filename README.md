@@ -41,5 +41,19 @@ const waterWalls = (wallsArray) => {
   //return largestWell      
 }
 
-# 
+
+Transormations:
+
+walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2],
+
+1. walls[0] > walls[1]
+2. -> isWell(walls[0], walls.slice(1)) === true
+3. --> findEnd(walls[0], walls.slice(1) === 2)
+4. --> calculateCapacity(5, [3]) === 2
+5. !largestWell so largestWell = {start: 1, end: 3, water: 2}
+6. 
+        
+
+
+ 
 //
