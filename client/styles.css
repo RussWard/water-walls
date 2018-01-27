@@ -1,6 +1,25 @@
 body {
   display: flex;
   min-height: 100vh;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+#input-form {
+  padding: 2rem 4rem;
+  border: 1px solid;
+}
+
+.grid-container {
+  display: flex;
+  height: fit-content;
+  align-items: flex-end;
+}
+
+.block {
+  background-color: #888;
+  height: 1rem;
+  width: 1rem;
+}
+
