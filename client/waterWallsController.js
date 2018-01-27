@@ -11,10 +11,10 @@ class WaterWalls {
     let walls = string.split(',');
     let body = { walls };
 
-    fetch('/createWaterWalls', {
+    fetch('/findLargestWell', {
       method: 'POST',
       mode: 'cors',
-      body: body,
+      body: JSON.stringify(body),
       headers: new Headers({
         "Content-Type": "application/json"
       })
@@ -26,6 +26,7 @@ class WaterWalls {
     .then(() => {
       this.renderWalls();
     })
+    .catch(err => { console.log(err) })
   }
 }
 

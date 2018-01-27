@@ -1,10 +1,13 @@
 const scripts = require('../scripts');
 
-const createWaterWalls = (req, res) => {
-  
-
-}
+const findLargestWell = (req, res) => {
+  let walls = req.body.walls;
+  walls = walls.map(string => parseInt(string));
+  let response = scripts.waterWalls(walls);
+  res.status(200);
+  res.send(JSON.stringify(response));
+};
 
 module.exports = {
-  createWaterWalls
-}
+  findLargestWell
+};

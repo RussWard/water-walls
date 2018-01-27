@@ -2,6 +2,6 @@ const express = require('express');
 const router = express.Router();
 const controller = require('./controllers');
 
-router.post('/createWaterWalls', controller.createWaterWalls)
+router.post('/findLargestWell', controller.findLargestWell)
 
 module.exports = router;
