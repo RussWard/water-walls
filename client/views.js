@@ -57,7 +57,6 @@ const createGrid = (walls) => {
   }
   grid.appendChild(scale);
   walls.forEach((wall, index) => {
-    console.log(height)
     let currentWall = createColumn(wall, height, index);
     grid.appendChild(currentWall);
   })

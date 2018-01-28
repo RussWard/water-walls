@@ -81,3 +81,11 @@ walls = [5, 3, 7, 2, 6, 4, 5, 9, 1, 2],
 # Roadmap For Part II, "Even WaterWallser"
 
 - Make a killer front end to render a given array of walls and their wells, showing the walls on either end of the largest well in a darker shade of awesome.
+
+- to run:
+1. copy the repo
+2. from within the repo run 'npm install'
+3. run 'npm run build'
+4. run 'npm start'
+5. in your browser, navigate to 'localhost:8080'
+6. enter a comma separated list of values and be amazed!
