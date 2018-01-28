@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "browserify client/index.js > client/dist/bundle.js",
     "start": "nodemon server/index.js",
     "test": "jest"
   },
@@ -12,5 +13,8 @@
   "devDependencies": {
     "express": "^4.16.2",
     "jest": "^22.1.4"
+  },
+  "dependencies": {
+    "browserify": "^15.2.0"
   }
 }
