@@ -12,9 +12,8 @@ class WaterWalls {
     let walls = string.split(',');
     walls = walls.map(string => parseInt(string));
     let body = { walls };
-    this.walls = walls;
 
-    fetch('/findLargestWell', {
+    fetch('/makeWells', {
       method: 'POST',
       mode: 'cors',
       body: JSON.stringify(body),
@@ -24,10 +23,11 @@ class WaterWalls {
     })
     .then(response => response.json())
     .then(data => {
-      this.largestWell = data;
+      this.walls = data;
+      views.clearInput();
+      views.clearWells();
     })
     .then(() => {
-      views.clearInput();
       views.renderWells(this.walls);
     })
     .catch(err => { console.log(err) })

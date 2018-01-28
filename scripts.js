@@ -73,6 +73,8 @@ const addWater = (walls, largestWell) => {
     let tallestAfter = Math.max(...walls.slice(i + 1));
     if (walls[i] < tallestBefore && walls[i] < tallestAfter) {
       col.water = Math.min(tallestBefore, tallestAfter) - walls[i];
+    } else {
+      col.water = 0;
     }
     results.push(col);
   }

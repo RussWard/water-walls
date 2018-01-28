@@ -16,5 +16,6 @@ const makeWells = (req, res) => {
 }
 
 module.exports = {
+  makeWells,
   findLargestWell
 };

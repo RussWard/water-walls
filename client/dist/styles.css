@@ -13,7 +13,6 @@ body {
 
 .grid-container {
   margin-top: 2rem;
-  padding: .25rem;
   border: 1px solid;
   display: flex;
   height: fit-content;
@@ -22,10 +21,10 @@ body {
 
 .block,
 .scale-block {
-  background-color: #888;
+  background-color: #999;
   height: 2rem;
   width: 2rem;
-  border: 1px solid;
+  border: 1px solid #888;
 }
 
 .scale-block {
@@ -33,4 +32,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.water {
+  background-color: aqua;
+}
+
+.air {
+  background-color: #fff;
+}
+
+.largest {
+  background-color: black;
+  border: 1px solid black;
 }
