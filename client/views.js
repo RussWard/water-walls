@@ -22,7 +22,7 @@ const createGrid = (walls) => {
   let width = walls.length + 1;
   grid.setAttribute('style', `grid-template: repeat(${height},1fr)/repeat(${width}, 1fr);`);
   let scale = document.createElement('div');
-  for ( let i = height; i > 0; i--) {
+  for (let i = height; i > 0; i--) {
     let scaleBlock = document.createElement('div');
     scaleBlock.setAttribute('class', 'scale-block');
     scaleBlock.innerHTML = i;

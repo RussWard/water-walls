@@ -28,7 +28,7 @@ const findEnd = (current, remainingWalls) => {
 }
 
 
-const waterWalls = (wallsArray) => {
+const findLargestWell = (wallsArray) => {
   let largestWell;
   let current = 0;
 
@@ -61,9 +61,44 @@ const waterWalls = (wallsArray) => {
   }
 }
 
+const addWater = (walls, largestWell) => {
+  let results = [];
+  for (let i = 1; i < walls.length - 1; i++) {
+    let col = {};
+    col.wall = walls[i];
+    if (i + 1 === largestWell[0] || i + 1 === largestWell[1]) {
+      col.largest = true;
+    }
+    let tallestBefore = Math.max(...walls.slice(0, i));
+    let tallestAfter = Math.max(...walls.slice(i + 1));
+    if (walls[i] < tallestBefore && walls[i] < tallestAfter) {
+      col.water = Math.min(tallestBefore, tallestAfter) - walls[i];
+    }
+    results.push(col);
+  }
+  let start = {
+    wall: walls[0],
+    water: 0,
+  };
+  if (largestWell[0] === 1) {
+    start.largest = true;
+  }
+  results.unshift(start)
+  let end = {
+    wall: walls[walls.length - 1],
+    water: 0,
+  };
+  if (largestWell[1] === walls.length) {
+    end.largest = true;
+  }
+  results.push(end);
+  return results; 
+}
+
 module.exports = {
+  addWater,
   calculateCapacity,
   isWell,
   findEnd,
-  waterWalls
+  findLargestWell
 }
